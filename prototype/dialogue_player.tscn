@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bho8bedr2a3n1"]
+
+[ext_resource type="Texture2D" uid="uid://c7fxko7ff7b5b" path="res://resources/text bg.png" id="1_8uawb"]
+[ext_resource type="Script" path="res://dialogue_player.gd" id="1_rorjl"]
+
+[node name="DialoguePlayer" type="CanvasLayer"]
+script = ExtResource("1_rorjl")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -7.0
+offset_bottom = -8.0
+texture = ExtResource("1_8uawb")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -7.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 2

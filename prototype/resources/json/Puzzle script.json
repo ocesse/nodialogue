@@ -1,0 +1,9 @@
+{
+	"door": [
+		"The door is locked.",
+		"Where did I put the key?"
+		],
+	"key": [
+		"Hey! This is the key!"
+		],
+}

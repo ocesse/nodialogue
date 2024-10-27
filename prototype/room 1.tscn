@@ -1,0 +1,179 @@
+[gd_scene load_steps=24 format=3 uid="uid://dr77alq6iw0hi"]
+
+[ext_resource type="Texture2D" uid="uid://d3e52t4mfgxlk" path="res://icon.svg" id="1_hbu2s"]
+[ext_resource type="Texture2D" uid="uid://bh1iqyj1onydk" path="res://resources/door.png" id="2_qy8ns"]
+[ext_resource type="Script" path="res://movement.gd" id="3_aailc"]
+[ext_resource type="Texture2D" uid="uid://f5urjwmqxqqu" path="res://resources/blank room.png" id="4_thrym"]
+[ext_resource type="PackedScene" uid="uid://bim0au1gnpp3q" path="res://dialogue_area.tscn" id="5_mijsw"]
+[ext_resource type="PackedScene" uid="uid://bho8bedr2a3n1" path="res://dialogue_player.tscn" id="6_56kcl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_732x1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1saar"]
+albedo_texture = ExtResource("1_hbu2s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_88qdr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ikbx"]
+size = Vector3(0.998322, 0.001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r45p"]
+albedo_texture = ExtResource("1_hbu2s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbush"]
+albedo_texture = ExtResource("2_qy8ns")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ivyr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_adgkq"]
+size = Vector3(1, 0.001, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_27kk4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_or2tk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy5ko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioo21"]
+size = Vector3(0.001, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf2xs"]
+albedo_texture = ExtResource("4_thrym")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v87mt"]
+albedo_texture = ExtResource("4_thrym")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iari3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0rx6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djb0f"]
+
+[node name="room 1" type="Node3D"]
+
+[node name="DialogueAreaKey" parent="." instance=ExtResource("5_mijsw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 6)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DialogueAreaKey"]
+shape = SubResource("BoxShape3D_732x1")
+
+[node name="floor" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1saar")
+mesh = SubResource("PlaneMesh_88qdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.05176e-05, 0, 0)
+shape = SubResource("BoxShape3D_8ikbx")
+
+[node name="wall 1" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 10, -10)
+material_override = SubResource("StandardMaterial3D_2r45p")
+mesh = SubResource("PlaneMesh_88qdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall 1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall 1/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.05176e-05, 0, 0)
+shape = SubResource("BoxShape3D_8ikbx")
+
+[node name="wall 2" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-07, 10, -4.37114e-07, 0, -4.37114e-07, -10, -10, -4.37114e-07, 1.91069e-14, -10, 10, 0)
+material_override = SubResource("StandardMaterial3D_2r45p")
+mesh = SubResource("PlaneMesh_88qdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall 2/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.05176e-05, 0, 0)
+shape = SubResource("BoxShape3D_8ikbx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.570519, -0.405813, 0.714019, -0.147049, 0.80487, 0.574944, -0.808013, -0.433012, 0.399519, 18.3466, 24.1583, 13.9577)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.593895, -0.639627, 0.488022, 0.494183, 0.768686, 0.406086, -0.634879, 0, 0.772612, 15, 10, 15)
+
+[node name="door" type="CSGMesh3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 5, -9.754)
+material_override = SubResource("StandardMaterial3D_kbush")
+mesh = SubResource("PlaneMesh_4ivyr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, -7.10543e-15, 0, 7.10543e-15, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_adgkq")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("3_aailc")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.926003, 0)
+mesh = SubResource("CapsuleMesh_27kk4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_or2tk")
+
+[node name="DialogueInteractionArea" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99425, 0)
+collision_layer = 2
+collision_mask = 0
+collision_priority = 2.0
+
+[node name="PlayerDialogueCollision" type="CollisionShape3D" parent="CharacterBody3D/DialogueInteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_cy5ko")
+
+[node name="invisible wall 1" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 9.5, 10, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible wall 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0238991, 0, 0)
+shape = SubResource("BoxShape3D_ioo21")
+
+[node name="invisible wall 2" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, 10, 10)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible wall 2"]
+shape = SubResource("BoxShape3D_ioo21")
+
+[node name="blank1" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 20, -20)
+material_override = SubResource("StandardMaterial3D_xf2xs")
+mesh = SubResource("PlaneMesh_88qdr")
+
+[node name="blank2" type="CSGMesh3D" parent="."]
+transform = Transform3D(-4.37114e-07, 10, -4.37114e-07, 0, -4.37114e-07, -10, -10, -4.37114e-07, 1.91069e-14, 10, 10, -20)
+material_override = SubResource("StandardMaterial3D_v87mt")
+mesh = SubResource("PlaneMesh_88qdr")
+
+[node name="DialogueAreaDoor" parent="." instance=ExtResource("5_mijsw")]
+transform = Transform3D(9.5, 0, 0, 0, 9.5, 0, 0, 0, 9.5, 0, 5, -12.616)
+collision_priority = 2.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DialogueAreaDoor"]
+shape = SubResource("BoxShape3D_iari3")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
+mesh = SubResource("BoxMesh_g0rx6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 0
+collision_mask = 2
+collision_priority = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_djb0f")
+
+[node name="DialoguePlayer" parent="." instance=ExtResource("6_56kcl")]
+layer = 2
+scene_text_file = "res://resources/json/Puzzle script.json"
